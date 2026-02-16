@@ -2,6 +2,8 @@
 const mapsUrl = (query) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 
+const baseUrl = import.meta.env.BASE_URL;
+
 const days = [
   {
     date: '2/27',
@@ -101,6 +103,39 @@ const restaurantOptions = [
     name: '鳥貴族 関内北口店',
     mapQuery: '鳥貴族 関内北口店 橫濱',
     hours: '星期日 16:00～00:00\n星期一 17:00～00:00\n星期二 17:00～00:00\n星期三 17:00～00:00\n星期四 17:00～00:00\n星期五 17:00～00:00\n星期六 16:00～00:00',
+  },
+  {
+    name: '麥當勞 關內北口店',
+    mapQuery: '麥當勞 關內北口店 橫濱',
+    hours: '24 小時營業',
+  },
+  {
+    name: '吉野家',
+    mapQuery: '吉野家 關內 橫濱',
+    hours: '24 小時營業',
+  },
+];
+
+const souvenirOptions = [
+  {
+    name: '「橫濱奶油夾心餅乾」（横浜バターサン）',
+    note: '橫濱人氣伴手禮餅乾，可在橫濱站、百貨地下街或大型土產店找到。',
+    image: `${baseUrl}souvenirs/yokohsmamustbuy_IMG_2816.jpg`,
+  },
+  {
+    name: '洋菓子Francais，橫濱法式千層酥',
+    note: '色彩繽紛的法式千層酥禮盒，很適合送朋友或帶回公司分送。',
+    image: `${baseUrl}souvenirs/yokohsmamustbuy_IMG_2664.jpg`,
+  },
+  {
+    name: '橫濱煉瓦',
+    note: '以橫濱紅磚倉庫為靈感的特色伴手禮。',
+    image: `${baseUrl}souvenirs/yokohsmamustbuy_IMG_2654.jpg`,
+  },
+  {
+    name: 'ARIAKE 橫濱 HARBOUR',
+    note: '橫濱經典船形糕點，有多種口味，是很受歡迎的定番伴手禮。',
+    image: `${baseUrl}souvenirs/yokohsmamustbuy_IMG_2665.jpg`,
   },
 ];
 </script>
@@ -314,6 +349,48 @@ const restaurantOptions = [
               <span aria-hidden="true">📍</span>
               地圖
             </a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 伴手禮備選項目 -->
+      <section class="mt-10 rounded-2xl bg-white p-5 shadow-md ring-1 ring-gray-200/60 sm:p-6">
+        <h2 class="mb-4 flex items-center gap-2 text-lg font-semibold text-travel-navy">
+          <span class="rounded-full bg-travel-mint/30 p-1.5 text-travel-navy">🎁</span>
+          伴手禮備選項目
+        </h2>
+        <ul class="space-y-3">
+          <li
+            v-for="(souvenir, i) in souvenirOptions"
+            :key="i"
+            class="flex flex-col gap-3 rounded-lg border border-gray-200/80 bg-gray-50/50 px-4 py-3 sm:flex-row sm:items-center"
+          >
+            <div class="min-w-0 flex-1">
+              <p class="font-medium text-gray-800">
+                {{ souvenir.name }}
+              </p>
+              <p v-if="souvenir.note" class="mt-1 text-gray-600 text-sm">
+                {{ souvenir.note }}
+              </p>
+            </div>
+            <div class="flex shrink-0 flex-col items-end gap-2">
+              <div v-if="souvenir.image" class="shrink-0">
+                <img
+                  :src="souvenir.image"
+                  :alt="souvenir.name"
+                  class="h-28 w-28 rounded-xl object-cover shadow-sm ring-1 ring-gray-200/80 sm:h-32 sm:w-32"
+                />
+              </div>
+              <a
+                :href="`https://www.google.com/search?q=${encodeURIComponent(souvenir.name + ' 橫濱')}`"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1 rounded-full bg-travel-coral/20 px-3 py-1.5 text-travel-navy text-xs font-medium transition hover:bg-travel-coral/40"
+              >
+                <span aria-hidden="true">🔍</span>
+                搜尋
+              </a>
+            </div>
           </li>
         </ul>
       </section>
