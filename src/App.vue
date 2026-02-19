@@ -54,10 +54,11 @@ const days = [
     isPlaceholder: false,
     highlights: [
       { text: '早餐：Toaster Bread Cafe&Champagne Bar', mapQuery: 'Toaster Bread Cafe&Champagne Bar 橫濱' },
-      { text: '前往櫻木町站搭乘 YOKOHAMA AIR CABIN (空中纜車)', mapQuery: 'YOKOHAMA AIR CABIN 櫻木町站' },
+      { text: '前往櫻木町站搭乘 YOKOHAMA AIR CABIN (空中纜車) 🎫 票價：成人單程 ¥1,000 / 來回 ¥1,800', mapQuery: 'YOKOHAMA AIR CABIN 櫻木町站' },
       { text: '抵達運河公園站，步行至橫濱赤色倉庫', mapQuery: 'YOKOHAMA AIR CABIN 運河公園站' },
-      { text: '午餐：(待定)' },
-      { text: '下午：橫濱站周邊百貨公司 (高島屋、SOGO)', mapQuery: '橫濱站' },
+      { text: '午餐：荒井屋SOGO橫濱店 (10F)', mapQuery: '荒井屋 SOGO 橫濱店' },
+      { text: '下午：SOGO B2 伴手禮購買', mapQuery: '橫濱 SOGO' },
+      { text: '晚上：山下公園散步', mapQuery: '山下公園' },
       { text: '晚餐：(待定)' },
     ],
   },
@@ -97,46 +98,93 @@ const restaurantOptions = [
     name: '鳥貴族 関内北口店',
     mapQuery: '鳥貴族 関内北口店 橫濱',
     hours: '星期日 16:00～00:00\n星期一 17:00～00:00\n星期二 17:00～00:00\n星期三 17:00～00:00\n星期四 17:00～00:00\n星期五 17:00～00:00\n星期六 16:00～00:00',
+    budget: '每件商品均一價 ¥390 (含稅)',
   },
   {
     name: '麥當勞 關內北口店',
     mapQuery: '麥當勞 關內北口店 橫濱',
     hours: '24 小時營業',
+    budget: '約 ¥500 - ¥1,000',
   },
   {
     name: '吉野家',
     mapQuery: '吉野家 關內 橫濱',
     hours: '24 小時營業',
-  },
-  {
-    name: '迴轉壽司 活美登利 橫濱天空大樓店',
-    mapQuery: '活美登利 橫濱天空大樓',
-    hours: '週一至週六 11:00～22:30\n週日及國定假日 11:00～22:00',
-    transport: '從橫濱站東口經地下街步行約 6-10 分鐘，位於橫濱天空大樓 (Sky Building) 11 樓。',
-  },
-  {
-    name: '壽司 活 JOINUS橫濱店',
-    mapQuery: '壽司 活 JOINUS橫濱店',
-    hours: '每日 11:00～23:00 (L.O. 22:00)',
-    transport: '橫濱站西口直通，位於 JOINUS 購物中心 B2F，步行約 1 分鐘。',
+    budget: '約 ¥500 - ¥1,200',
   },
   {
     name: '鰻魚 Roman 橫濱PORTA店',
     mapQuery: '鰻魚 Roman 橫濱PORTA店',
     hours: '每日 11:00～23:00 (L.O. 22:00)',
     transport: '橫濱站東口直達橫濱 PORTA 地下街，步行約 1 分鐘。',
+    budget: '午餐 ¥1,000-2,000 / 晚餐 ¥2,000-3,000',
   },
   {
     name: '荒井屋SOGO橫濱店',
     mapQuery: '荒井屋 SOGO 橫濱店',
     hours: '平日：午餐 11:00-15:30 / 晚餐 17:00-23:00\n假日：午餐 11:00-16:00 / 晚餐 17:00-23:00\n(最後點餐 21:00)',
     transport: '橫濱站東口直通，位於 SOGO 橫濱店 10 樓，步行約 4 分鐘。',
+    budget: '午餐 ¥3,000-4,000 / 晚餐 ¥8,000-10,000',
   },
   {
     name: 'AFURI 橫濱JOINUS',
     mapQuery: 'AFURI 橫濱JOINUS',
     hours: '每日 11:00～23:00 (L.O. 22:30)',
     transport: '橫濱站西口直通，位於 JOINUS 購物中心 B1F，步行約 3 分鐘。',
+    budget: '約 ¥1,000 - ¥2,000',
+  },
+  {
+    name: '勝烈庵 馬車道總本店',
+    mapQuery: '勝烈庵 馬車道總本店',
+    hours: '11:00～21:30 (L.O. 21:00)',
+    transport: '橫濱市營地下鐵關內站（馬車道9號出口）步行 1 分鐘；JR 關內站（北口）步行 5 分鐘。',
+    budget: '午餐約 ¥1,600 / 晚餐約 ¥2,000 - ¥3,000',
+  },
+  {
+    name: '鵬天閣 新館',
+    mapQuery: '鵬天閣 新館',
+    hours: '11:00～22:00 (L.O. 21:30)',
+    transport: '元町・中華街站 (2號出口) 步行 4 分鐘；JR 石川町站步行 10 分鐘。',
+    budget: '午餐約 ¥1,500 / 晚餐約 ¥3,000',
+    note: '橫濱中華街排隊名店，必吃「上海生煎包 (焼き小籠包)」。',
+  },
+  {
+    name: '王府井 (Wangfujing) 橫濱中華街',
+    mapQuery: '王府井 橫濱中華街',
+    hours: '10:00～21:00 (依店鋪而異)',
+    transport: '元町・中華街站步行約 1 分鐘；JR 石川町站步行約 5 分鐘。',
+    budget: '小吃約 ¥500 - ¥1,000 / 店內用餐約 ¥1,500 - ¥3,000',
+    note: '中華街超人氣名店，以「烤小籠包 (焼き小籠包)」聞名，外皮酥脆內餡多汁。',
+  },
+];
+
+const locationOptions = [
+  {
+    name: '駿河屋 (Surugaya) - 丸井CITY橫濱店',
+    mapQuery: '駿河屋 丸井CITY橫濱店',
+    note: '位於「丸井CITY橫濱 (Marui City Yokohama)」7樓。就在 SOGO 橫濱店隔壁，是連通的建築物。',
+    hours: '10:30～20:30',
+  },
+  {
+    name: '安利美特 (Animate) 橫濱店',
+    mapQuery: '安利美特 橫濱VIVRE',
+    note: '位於「橫濱VIVRE (Yokohama VIVRE)」8樓，從橫濱車站西口步行約 5 分鐘。',
+    hours: '平日 11:00～21:00 / 假日 10:00～21:00',
+  },
+];
+
+const dessertShopOptions = [
+  {
+    name: 'Henri Charpentier SOGO 橫濱店',
+    mapQuery: 'Henri Charpentier SOGO Yokohama',
+    note: '位於 SOGO 橫濱店 B2F。金氏世界紀錄認證費南雪 (Financier) 最暢銷品牌，經典商品還有瑪德蓮。',
+    hours: '10:00～20:00',
+  },
+  {
+    name: 'Venchi (聞綺) SOGO 橫濱店',
+    mapQuery: 'Venchi SOGO Yokohama',
+    note: '位於 SOGO 橫濱店 B2F。義大利百年頂級巧克力品牌，除了多樣化的巧克力塊，其 Gelato 義式冰淇淋也非常出名。',
+    hours: '10:00～20:00',
   },
 ];
 
@@ -363,6 +411,33 @@ const suicaGuide = {
 
 
 
+      <!-- 地點備選項目 -->
+      <section class="mt-12 rounded-2xl bg-white p-5 shadow-md ring-1 ring-gray-200/60 sm:p-6">
+        <h2 class="mb-4 flex items-center gap-2 text-lg font-semibold text-travel-navy">
+          <span class="rounded-full bg-travel-mint/40 p-1.5 text-travel-navy">📍</span>
+          地點備選項目
+        </h2>
+        <ul class="space-y-3">
+          <li v-for="(location, i) in locationOptions" :key="i"
+            class="flex flex-wrap items-center gap-2 rounded-lg border border-gray-200/80 bg-gray-50/50 px-4 py-3">
+            <div class="min-w-0 flex-1">
+              <span class="font-medium text-gray-800">{{ location.name }}</span>
+              <p v-if="location.note" class="mt-1 text-gray-600 text-sm">
+                ℹ️ {{ location.note }}
+              </p>
+              <p v-if="location.hours" class="mt-1 text-gray-500 text-sm">
+                🕐 營業時間：{{ location.hours }}
+              </p>
+            </div>
+            <a :href="mapsUrl(location.mapQuery)" target="_blank" rel="noopener noreferrer"
+              class="inline-flex shrink-0 items-center gap-1 rounded-full bg-travel-mint/20 px-3 py-1.5 text-travel-navy text-xs font-medium transition hover:bg-travel-mint/40">
+              <span aria-hidden="true">📍</span>
+              地圖
+            </a>
+          </li>
+        </ul>
+      </section>
+
       <!-- 餐廳備選項目 -->
       <section class="mt-12 rounded-2xl bg-white p-5 shadow-md ring-1 ring-gray-200/60 sm:p-6">
         <h2 class="mb-4 flex items-center gap-2 text-lg font-semibold text-travel-navy">
@@ -377,11 +452,41 @@ const suicaGuide = {
               <p v-if="restaurant.hours" class="mt-1 whitespace-pre-line text-gray-500 text-sm">
                 🕐 {{ restaurant.hours }}
               </p>
+              <p v-if="restaurant.budget" class="mt-1 text-travel-coral/90 text-sm font-medium">
+                💰 預估消費：{{ restaurant.budget }}
+              </p>
               <p v-if="restaurant.transport" class="mt-1 text-gray-800/80 text-xs sm:text-sm">
                 🚃 {{ restaurant.transport }}
               </p>
             </div>
             <a :href="mapsUrl(restaurant.mapQuery)" target="_blank" rel="noopener noreferrer"
+              class="inline-flex shrink-0 items-center gap-1 rounded-full bg-travel-mint/20 px-3 py-1.5 text-travel-navy text-xs font-medium transition hover:bg-travel-mint/40">
+              <span aria-hidden="true">📍</span>
+              地圖
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 伴手禮/甜點店備選項目 -->
+      <section class="mt-12 rounded-2xl bg-white p-5 shadow-md ring-1 ring-gray-200/60 sm:p-6">
+        <h2 class="mb-4 flex items-center gap-2 text-lg font-semibold text-travel-navy">
+          <span class="rounded-full bg-travel-coral/10 p-1.5 text-travel-coral">🧁</span>
+          伴手禮/甜點店備選項目
+        </h2>
+        <ul class="space-y-3">
+          <li v-for="(shop, i) in dessertShopOptions" :key="i"
+            class="flex flex-wrap items-center gap-2 rounded-lg border border-gray-200/80 bg-gray-50/50 px-4 py-3">
+            <div class="min-w-0 flex-1">
+              <span class="font-medium text-gray-800">{{ shop.name }}</span>
+              <p v-if="shop.note" class="mt-1 text-gray-600 text-sm">
+                ✨ {{ shop.note }}
+              </p>
+              <p v-if="shop.hours" class="mt-1 text-gray-500 text-sm">
+                🕐 營業時間：{{ shop.hours }}
+              </p>
+            </div>
+            <a :href="mapsUrl(shop.mapQuery)" target="_blank" rel="noopener noreferrer"
               class="inline-flex shrink-0 items-center gap-1 rounded-full bg-travel-mint/20 px-3 py-1.5 text-travel-navy text-xs font-medium transition hover:bg-travel-mint/40">
               <span aria-hidden="true">📍</span>
               地圖
